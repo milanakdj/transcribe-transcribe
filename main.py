@@ -32,11 +32,11 @@ import whisper
 import os
 # FILE_LOCATION = "./audio/ENG AND NEPALI 1.m4a"
 
-model = whisper.load_model("tiny")
-audio_file = "C:/Documents/projects/audio to script/Record (online-voice-recorder.com).mp3"
+model = whisper.load_model("large")
+audio_file = "./Record (online-voice-recorder.com).mp3"
 # result = model.transcribe(r"C:/Documents/projects/audio to script/audio/test.m4a")
 
-# task = "transcribe" # Default is "transcribe"
+task = "transcribe" # Default is "transcribe"
 source_language = "Nepali"
 
 # Simply pass "translate" into your task parameter.
@@ -45,8 +45,8 @@ source_language = "Nepali"
 # print(result["text"])
 
 def translate(audio_file):
-    options = dict(beam_size=5, best_of=5)
-    translate_options = dict(task="translate",fp16=False,**options, language=source_language)
+    # options = dict(beam_size=5, best_of=5)
+    translate_options = dict(task="translate",fp16=False, language=source_language)
     result = model.transcribe(audio_file,**translate_options)
     return result
 
