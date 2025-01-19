@@ -1,0 +1,63 @@
+How to translate foreign language audio into English with OpenAI’s Whisper and Python.
+
+Simple step by step instructions for translating text to English with the Whisper model. It’s a lot easier than you’d imagine.
+
+
+
+
+
+
+
+
+As if the power of OpenAi’s Whisper wasn’t already enough with it’s state of the art level Speech-to-text transcription, it’s also able to directly transcribe foreign language audio into English (English → Foreign language translation is not yet available, however).
+It’s not clearly explained on the official repo how this is done using Python, and it took a bit of digging to figure out how. Best of all, it’s amazingly simple.
+
+Instructions
+Step 1. Install dependencies
+If you’re just getting started, install the package from the official OpenAI repo. Type the following in your terminal:
+
+# Install from the repo
+pip install git+https://github.com/openai/whisper.git 
+
+#Make sure it's up to date with:
+
+pip install --upgrade --no-deps --force-reinstall git+https://github.com/openai/whisper.git
+
+You’ll also need to make sure you have the command-line tool ffmpeg on your system. Follow the setup instructions if you don’t have it installed yet. found in https://github.com/openai/whisper
+
+
+Step 2. Set the task to “translate”
+The Python instructions explain how to transcribe from an audio file as follows:
+
+import whisper
+
+model = whisper.load_model("base")
+result = model.transcribe("audio.mp3")
+print(result["text"])
+
+In order to translate a foreign language into English, just pass in a task parameter set to “translate”.
+
+
+task = "translate" # Default is "transcribe"
+
+# Simply pass "translate" into your task parameter.
+result = model.transcribe("audio.mp3", task=task)
+
+
+Step 3. That’s it really.
+There you have it. The transcribe function returns a dictionary of the translation text, timestamps and other metadata that can be helpful for various tasks, but at the high level, if you just want the translated text, access it with result[“text”].
+
+
+Added tip: Setting the source language
+It will auto-detect the source language using the first 30 seconds of audio. If for any reason, that’s not enough you can pass a language parameter into the transcribe function.
+
+For example:
+
+source_language = "swedish"
+
+# Set the source language to swedish
+result = model.transcribe("audio.mp3", task=task, language=source_language)
+
+
+For an official list of supported languages see Available models and languages from the official docs.
+
