@@ -33,7 +33,7 @@ import os
 # FILE_LOCATION = "./audio/ENG AND NEPALI 1.m4a"
 
 model = whisper.load_model("large")
-audio_file = "./Record (online-voice-recorder.com).mp3"
+audio_file = "./record_one.mp3"
 # result = model.transcribe(r"C:/Documents/projects/audio to script/audio/test.m4a")
 
 task = "transcribe" # Default is "transcribe"
@@ -54,11 +54,12 @@ results = translate(audio_file)
 print(results["text"])
 print(results["segments"])
 
+import uuid
 
 from whisper.utils import WriteVTT
 
 output_dir = "./content"
-audio_path = "test1234.vtt"
+audio_path = f"convert_{uuid.uuid4()}.vtt"
 wt = WriteVTT(output_dir="./content")
 
 with open(os.path.join(output_dir,audio_path), "w") as vtt:
