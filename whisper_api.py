@@ -4,7 +4,7 @@ import os
 from openai import OpenAI
 from pydub import AudioSegment
 
-FILE_LOCATION = "./nepali123.m4a"
+FILE_LOCATION = "./meeting000.m4a"
 
 audio_file = open(FILE_LOCATION, "rb")
 
@@ -56,6 +56,9 @@ for audio in glob.glob("./audio_slice/*.mp3"):
 
     print(transcription)
     complete_translation = complete_translation + transcription
-    
-with open(f"./text_slice/compleete_{audio_name.split('.')[0]}.txt", "w") as f:
-        f.write(transcription)
+
+
+with open(f"./export_slice/text_slice/complete_timestamp_{audio_name.split('.')[0]}.txt", "w") as f:
+        f.write(complete_translation)
+with open(f"./export_slice/text_slice/complete_timestamp_{audio_name.split('.')[0]}.vtt", "w") as f:
+        f.write(complete_translation)
