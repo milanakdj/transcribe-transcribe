@@ -1,8 +1,0 @@
-WEBVTT
-
-00:00:00.000 --> 00:00:08.000
-I am speaking in Nepali. Now I am counting in Nepali.
-
-00:00:08.000 --> 00:00:20.000
-One, two, three, four, five, six, seven, eight, nine, ten.
-

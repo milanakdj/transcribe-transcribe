@@ -44,6 +44,8 @@ for i in range(ceil(audio_length / ten_minutes)):
 slice_directory = "./export_slice"
 os.chdir(slice_directory)
 
+complete_translation = ""
+
 for audio in glob.glob("./audio_slice/*.mp3"):
     mp3_filename = os.path.splitext(os.path.basename(audio))[0] + ".mp3"
     if audio_name in mp3_filename:
@@ -53,5 +55,7 @@ for audio in glob.glob("./audio_slice/*.mp3"):
         )
 
     print(transcription)
-    with open(f"./text_slice/{mp3_filename.split('.')[0]}.txt", "w") as f:
+    complete_translation = complete_translation + transcription
+    
+with open(f"./text_slice/compleete_{audio_name.split('.')[0]}.txt", "w") as f:
         f.write(transcription)
