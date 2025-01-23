@@ -2,7 +2,7 @@
 text = ""
 text_with_timestamp = ""
 
-TEXT_FILE = "complete_timestamp_meeting000.txt"
+TEXT_FILE = "complete_timestamp_0122.txt"
 with open(TEXT_FILE, "r") as f:
     text_with_timestamp = f.read()
 

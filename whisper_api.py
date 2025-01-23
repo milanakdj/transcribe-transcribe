@@ -4,7 +4,7 @@ import os
 from openai import OpenAI
 from pydub import AudioSegment
 
-FILE_LOCATION = "./meeting000.m4a"
+FILE_LOCATION = "./0122.MP3"
 
 audio_file = open(FILE_LOCATION, "rb")
 
@@ -21,7 +21,7 @@ client = OpenAI()
 # # print(transcription.text)
 
 # convert the mp4 to mp3
-if not FILE_LOCATION.endswith(".mp3"):
+if not FILE_LOCATION.lower().endswith(".mp3"):
     AudioSegment.from_file(FILE_LOCATION).export(audio_name + ".mp3", format="mp3")
 
 
@@ -54,11 +54,11 @@ for audio in glob.glob("./audio_slice/*.mp3"):
             model="whisper-1", file=audio_file, response_format="vtt"
         )
 
-    print(transcription)
+    # print(transcription)
     complete_translation = complete_translation + transcription
 
-
-with open(f"./export_slice/text_slice/complete_timestamp_{audio_name.split('.')[0]}.txt", "w") as f:
-        f.write(complete_translation)
-with open(f"./export_slice/text_slice/complete_timestamp_{audio_name.split('.')[0]}.vtt", "w") as f:
+print(complete_translation)
+with open(f"./text_slice/complete_timestamp_{audio_name.split('.')[0]}.txt", "w") as f:
+        f.write(str(complete_translation))
+with open(f"./text_slice/complete_timestamp_{audio_name.split('.')[0]}.vtt", "w") as f:
         f.write(complete_translation)
