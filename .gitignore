@@ -1,0 +1,10 @@
+audio/**/*.mp3
+audio/**/*.m4a
+content/**/*.vtt
+export_slice/
+txt/
+with_subtitle/
+.venv
+.python-version
+jax_cache
+audio

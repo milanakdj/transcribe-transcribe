@@ -1,0 +1,17 @@
+[project]
+name = "transcribe-transcribe"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "ipdb>=0.13.13",
+    "jax>=0.7.1",
+    "openai>=1.107.2",
+    "pydub>=0.25.1",
+    "whisper>=1.1.10",
+    "whisper-jax",
+]
+
+[tool.uv.sources]
+whisper-jax = { git = "https://github.com/sanchit-gandhi/whisper-jax.git" }
